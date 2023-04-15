@@ -1,41 +1,78 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 public class HocVien {
 
-	private static int dem=0;
+    public static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+    public static final Scanner s = new Scanner(System.in);
 
-	private int maHV=++dem;
+    private static int dem = 0;
 
-	private String hoTen;
+    private int maHV = ++dem;
 
-	private String gioiTinh;
+    private String hoTen;
 
-	private String queQuan;
+    private String gioiTinh;
 
-	private Calendar ngaySinh;
+    private String queQuan;
 
-	private Calendar ngayGiaNhap;
+    private Calendar ngaySinh;
+
+    private Calendar ngayGiaNhap;
+
+    //set ngayGiaNhap là ngày tạo đối tượng
+    {
+        this.setNgayGiaNhap(new GregorianCalendar());
+    }
+
+    public HocVien() {
+
+    }
+
+    public HocVien(String hoTen, String gioiTinh, String queQuan, Calendar ngaySinh) {
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.queQuan = queQuan;
+        this.ngaySinh = ngaySinh;
+    }
+
+    public HocVien(String hoTen, String gioiTinh, String queQuan, String ngaySinh) throws ParseException {
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.queQuan = queQuan;
+        Calendar c = Calendar.getInstance();
+        c.setTime(f.parse(ngaySinh));
+        this.ngaySinh = c;
+    }
+
+    public void nhapHV() throws ParseException {
+        System.out.print("HoTen: ");
+        this.hoTen = s.nextLine();
         
-	public HocVien() {
-
-	}
-
-	public HocVien(String ten, String gt, String que, Calendar ngaySinh, Calendar ngayGiaNhap) {
-
-	}
+        System.out.print("GioiTinh: ");
+        this.gioiTinh = s.nextLine();
         
-        public HocVien(String ten, String gt, String que, Calendar ngaySinh, String ngayGiaNhap) {
+        System.out.print("QueQuan: ");
+        this.queQuan = s.nextLine();
+        
+        System.out.print("NgaySinh: ");
+         Calendar c = Calendar.getInstance();
+        c.setTime(f.parse(s.nextLine()));
+        this.ngaySinh = c;
+    }
 
-	}
-
-	public void nhapHV() {
-
-	}
-
-	public void xuatHV() {
-
-	}
+    public void xuatHV() {
+        System.out.printf("ID: %d\n", this.maHV);
+        System.out.printf("HoTen: %s\n", this.hoTen);
+        System.out.printf("GioiTinh: %s\n", this.gioiTinh);
+        System.out.printf("QueQuan: %s\n", this.queQuan);
+        System.out.printf("NgaySinh: %s\n", f.format(this.ngaySinh.getTime()));
+        System.out.printf("NgayGiaNhap: %s\n", f.format(this.ngayGiaNhap.getTime()));
+    }
 
     /**
      * @return the maHV
