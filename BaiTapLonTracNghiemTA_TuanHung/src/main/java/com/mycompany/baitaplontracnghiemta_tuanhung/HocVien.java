@@ -16,12 +16,16 @@ public class HocVien {
 	private Calendar ngaySinh;
 
 	private Calendar ngayGiaNhap;
-
+        
 	public HocVien() {
 
 	}
 
 	public HocVien(String ten, String gt, String que, Calendar ngaySinh, Calendar ngayGiaNhap) {
+
+	}
+        
+        public HocVien(String ten, String gt, String que, Calendar ngaySinh, String ngayGiaNhap) {
 
 	}
 
