@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class QLHocVien {
 
@@ -24,7 +25,7 @@ public class QLHocVien {
             }
         }
     }
-
+    
     public void themHV(int n) throws ParseException {
         for (int i = 1; i <= n; i++) {
             System.out.printf("Nhap HV thu %d\n", i);
@@ -33,17 +34,25 @@ public class QLHocVien {
             this.dsHocVien.add(h);
         }
     }
-
+    
+    public void xoaHV(HocVien...h){
+        this.dsHocVien.removeAll(Arrays.asList(h));
+    }
+    
     public List<HocVien> timKiemHVTheoTen(String t) {
-        return null;
+        return this.dsHocVien.stream().filter(i -> i.getHoTen().equals(t))
+                .collect(Collectors.toList());
+
     }
 
     public List<HocVien> timKiemHVTheoGT(String gt) {
-        return null;
+        return this.dsHocVien.stream().filter(i -> i.getGioiTinh().equals(gt))
+                .collect(Collectors.toList());
     }
 
     public List<HocVien> timKiemTheoQQ(String q) {
-        return null;
+        return this.dsHocVien.stream().filter(i -> i.getQueQuan().equals(q))
+                .collect(Collectors.toList());
     }
 
     public void xuatDSHV() {

@@ -1,8 +1,11 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.OptionalDouble;
 import java.util.Scanner;
 
 public class HocVien {
@@ -23,14 +26,33 @@ public class HocVien {
     private Calendar ngaySinh;
 
     private Calendar ngayGiaNhap;
+    
+    private List<KetQua> ketQua ; 
 
     //set ngayGiaNhap là ngày tạo đối tượng
     {
+        this.ketQua = new ArrayList<>();
         this.setNgayGiaNhap(new GregorianCalendar());
     }
 
     public HocVien() {
 
+    }
+    
+    public void taoBaiTap(int soCauHoi){ //TaoBT MutipleChoice 
+        
+    }
+    
+    public void taoBaiTap(String capDo, int soCauHoi, int x){ //TaoBT Incomplete hoac Converstation
+        
+    }
+    
+    public double tinhDiemTBThang(int thang, int nam){ //chua tinh theo thang/nam
+        OptionalDouble dtb = this.ketQua.stream().mapToDouble(d->{
+            
+            return d.getDiem();}).average();
+        
+        return dtb.isPresent()?dtb.getAsDouble():-1.0;  // dtb rỗng(isPresent()) thì trả về -1
     }
 
     public HocVien(String hoTen, String gioiTinh, String queQuan, Calendar ngaySinh) {
@@ -64,6 +86,10 @@ public class HocVien {
         c.setTime(f.parse(s.nextLine()));
         this.ngaySinh = c;
     }
+    
+    public void suaHV() throws ParseException{
+        this.nhapHV();
+    }
 
     public void xuatHV() {
         System.out.printf("ID: %d\n", this.maHV);
@@ -73,6 +99,7 @@ public class HocVien {
         System.out.printf("NgaySinh: %s\n", f.format(this.ngaySinh.getTime()));
         System.out.printf("NgayGiaNhap: %s\n", f.format(this.ngayGiaNhap.getTime()));
     }
+    
 
     /**
      * @return the maHV
@@ -156,6 +183,20 @@ public class HocVien {
      */
     public void setNgayGiaNhap(Calendar ngayGiaNhap) {
         this.ngayGiaNhap = ngayGiaNhap;
+    }
+
+    /**
+     * @return the ketQua
+     */
+    public List<KetQua> getKetQua() {
+        return ketQua;
+    }
+
+    /**
+     * @param ketQua the ketQua to set
+     */
+    public void setKetQua(List<KetQua> ketQua) {
+        this.ketQua = ketQua;
     }
 
 }

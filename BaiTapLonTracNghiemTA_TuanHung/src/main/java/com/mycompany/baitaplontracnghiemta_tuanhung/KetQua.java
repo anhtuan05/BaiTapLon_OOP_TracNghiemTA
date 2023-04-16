@@ -1,11 +1,28 @@
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class KetQua {
 
 	private Calendar ngayLamBai;
 
-	private float diem;
+	private double diem;
+        
+        private HocVien hocVien;
+        
+        private BaiTap baiTap;
+        
+        {
+            this.setNgayLamBai(new GregorianCalendar());
+        }
+
+    public KetQua() {
+    }
+    
+        
+    public void hienThiKQ(){
+        System.out.printf("%s Diem: %.1f\n",this.baiTap.hienThiBT(),this.diem);
+    }
 
     /**
      * @return the ngayLamBai
@@ -24,15 +41,43 @@ public class KetQua {
     /**
      * @return the diem
      */
-    public float getDiem() {
+    public double getDiem() {
         return diem;
     }
 
     /**
      * @param diem the diem to set
      */
-    public void setDiem(float diem) {
+    public void setDiem(double diem) {
         this.diem = diem;
+    }
+
+    /**
+     * @return the hocVien
+     */
+    public HocVien getHocVien() {
+        return hocVien;
+    }
+
+    /**
+     * @param hocVien the hocVien to set
+     */
+    public void setHocVien(HocVien hocVien) {
+        this.hocVien = hocVien;
+    }
+
+    /**
+     * @return the baiTap
+     */
+    public BaiTap getBaiTap() {
+        return baiTap;
+    }
+
+    /**
+     * @param baiTap the baiTap to set
+     */
+    public void setBaiTap(BaiTap baiTap) {
+        this.baiTap = baiTap;
     }
 
 }
