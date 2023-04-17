@@ -1,17 +1,14 @@
 
+import com.mycompany.baitaplontracnghiemta_tuanhung.CauHinh;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.OptionalDouble;
-import java.util.Scanner;
 
 public class HocVien {
 
-    public static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-    public static final Scanner s = new Scanner(System.in);
 
     private static int dem = 0;
 
@@ -38,15 +35,7 @@ public class HocVien {
     public HocVien() {
 
     }
-    
-    public void taoBaiTap(int soCauHoi){ //TaoBT MutipleChoice 
         
-    }
-    
-    public void taoBaiTap(String capDo, int soCauHoi, int x){ //TaoBT Incomplete hoac Converstation
-        
-    }
-    
     public double tinhDiemTBThang(int thang, int nam){ //chua tinh theo thang/nam
         OptionalDouble dtb = this.ketQua.stream().mapToDouble(d->{
             
@@ -67,23 +56,23 @@ public class HocVien {
         this.gioiTinh = gioiTinh;
         this.queQuan = queQuan;
         Calendar c = Calendar.getInstance();
-        c.setTime(f.parse(ngaySinh));
+        c.setTime(CauHinh.f.parse(ngaySinh));
         this.ngaySinh = c;
     }
 
     public void nhapHV() throws ParseException {
         System.out.print("HoTen: ");
-        this.hoTen = s.nextLine();
+        this.hoTen = CauHinh.s.nextLine();
         
         System.out.print("GioiTinh: ");
-        this.gioiTinh = s.nextLine();
+        this.gioiTinh = CauHinh.s.nextLine();
         
         System.out.print("QueQuan: ");
-        this.queQuan = s.nextLine();
+        this.queQuan = CauHinh.s.nextLine();
         
         System.out.print("NgaySinh: ");
          Calendar c = Calendar.getInstance();
-        c.setTime(f.parse(s.nextLine()));
+        c.setTime(CauHinh.f.parse(CauHinh.s.nextLine()));
         this.ngaySinh = c;
     }
     
@@ -96,8 +85,8 @@ public class HocVien {
         System.out.printf("HoTen: %s\n", this.hoTen);
         System.out.printf("GioiTinh: %s\n", this.gioiTinh);
         System.out.printf("QueQuan: %s\n", this.queQuan);
-        System.out.printf("NgaySinh: %s\n", f.format(this.ngaySinh.getTime()));
-        System.out.printf("NgayGiaNhap: %s\n", f.format(this.ngayGiaNhap.getTime()));
+        System.out.printf("NgaySinh: %s\n", CauHinh.f.format(this.ngaySinh.getTime()));
+        System.out.printf("NgayGiaNhap: %s\n", CauHinh.f.format(this.ngayGiaNhap.getTime()));
     }
     
 

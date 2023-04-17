@@ -1,9 +1,10 @@
 
+import com.mycompany.baitaplontracnghiemta_tuanhung.CauHinh;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class KetQua {
-
+        
 	private Calendar ngayLamBai;
 
 	private double diem;
@@ -19,6 +20,10 @@ public class KetQua {
     public KetQua() {
     }
     
+    public void taoBT(){
+        System.out.printf("Nhap ID cua ban %s:", CauHinh.s.nextLine());
+        
+    }
         
     public void hienThiKQ(){
         System.out.printf("%s Diem: %.1f\n",this.baiTap.hienThiBT(),this.diem);

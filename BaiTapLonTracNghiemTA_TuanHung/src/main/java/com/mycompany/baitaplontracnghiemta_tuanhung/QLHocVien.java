@@ -35,6 +35,9 @@ public class QLHocVien {
         }
     }
     
+    public void tinhtbDSHV(int thang, int nam){
+        this.dsHocVien.forEach(i->System.out.println(i.tinhDiemTBThang(thang, nam)));
+    }    
     public void xoaHV(HocVien...h){
         this.dsHocVien.removeAll(Arrays.asList(h));
     }
@@ -53,6 +56,10 @@ public class QLHocVien {
     public List<HocVien> timKiemTheoQQ(String q) {
         return this.dsHocVien.stream().filter(i -> i.getQueQuan().equals(q))
                 .collect(Collectors.toList());
+    }
+    
+    public HocVien timHVTheoID(int id){
+        return (HocVien) this.dsHocVien.stream().filter(i->i.getMaHV()==id);
     }
 
     public void xuatDSHV() {
