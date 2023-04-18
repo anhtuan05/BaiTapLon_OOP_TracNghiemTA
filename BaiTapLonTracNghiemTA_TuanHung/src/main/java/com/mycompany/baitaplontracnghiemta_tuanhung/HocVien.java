@@ -1,5 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.baitaplontracnghiemta_tuanhung;
 
-import com.mycompany.baitaplontracnghiemta_tuanhung.CauHinh;
+/**
+ *
+ * @author nguye
+ */
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,50 +17,55 @@ import java.util.List;
 import java.util.OptionalDouble;
 
 public class HocVien {
-
-
-    private static int dem = 0;
-
-    private int maHV = ++dem;
-
+   
+    private String maHV ;
+    
     private String hoTen;
-
+    
     private String gioiTinh;
-
+    
     private String queQuan;
-
+    
     private Calendar ngaySinh;
-
+    
     private Calendar ngayGiaNhap;
     
-    private List<KetQua> ketQua ; 
+    private List<KetQua> ketQua;
 
     //set ngayGiaNhap là ngày tạo đối tượng
     {
         this.ketQua = new ArrayList<>();
         this.setNgayGiaNhap(new GregorianCalendar());
     }
-
+    
     public HocVien() {
-
-    }
         
-    public double tinhDiemTBThang(int thang, int nam){ //chua tinh theo thang/nam
-        OptionalDouble dtb = this.ketQua.stream().mapToDouble(d->{
+    }
+    
+    public double tinhDiemTBThang(int thang, int nam) {
+        OptionalDouble dtb = this.ketQua.stream().mapToDouble(d -> {
             
-            return d.getDiem();}).average();
+            if (d.getNgayLamBai().get(Calendar.MONTH) == thang
+                    && d.getNgayLamBai().get(Calendar.YEAR) == nam) {
+                return d.getDiem();
+            } else {
+                return 0;
+            }
+        }).average();
         
-        return dtb.isPresent()?dtb.getAsDouble():-1.0;  // dtb rỗng(isPresent()) thì trả về -1
+        return dtb.isPresent() ? dtb.getAsDouble() : -1.0;  // dtb rỗng(isPresent()) thì trả về -1
     }
-
-    public HocVien(String hoTen, String gioiTinh, String queQuan, Calendar ngaySinh) {
+    
+    public HocVien(String maHV, String hoTen, String gioiTinh, String queQuan, Calendar ngaySinh) {
+        this.maHV = maHV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.queQuan = queQuan;
         this.ngaySinh = ngaySinh;
     }
-
-    public HocVien(String hoTen, String gioiTinh, String queQuan, String ngaySinh) throws ParseException {
+    
+    public HocVien(String maHV, String hoTen, String gioiTinh, String queQuan, String ngaySinh) throws ParseException {
+        this.maHV = maHV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.queQuan = queQuan;
@@ -59,7 +73,7 @@ public class HocVien {
         c.setTime(CauHinh.f.parse(ngaySinh));
         this.ngaySinh = c;
     }
-
+    
     public void nhapHV() throws ParseException {
         System.out.print("HoTen: ");
         this.hoTen = CauHinh.s.nextLine();
@@ -71,38 +85,37 @@ public class HocVien {
         this.queQuan = CauHinh.s.nextLine();
         
         System.out.print("NgaySinh: ");
-         Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance();
         c.setTime(CauHinh.f.parse(CauHinh.s.nextLine()));
         this.ngaySinh = c;
     }
     
-    public void suaHV() throws ParseException{
+    public void suaHV() throws ParseException {
         this.nhapHV();
     }
-
+    
     public void xuatHV() {
-        System.out.printf("ID: %d\n", this.maHV);
+        System.out.printf("ID: %s\n", this.getMaHV());
         System.out.printf("HoTen: %s\n", this.hoTen);
         System.out.printf("GioiTinh: %s\n", this.gioiTinh);
         System.out.printf("QueQuan: %s\n", this.queQuan);
         System.out.printf("NgaySinh: %s\n", CauHinh.f.format(this.ngaySinh.getTime()));
-        System.out.printf("NgayGiaNhap: %s\n", CauHinh.f.format(this.ngayGiaNhap.getTime()));
+        System.out.printf("NgayGiaNhap: %s\n\n", CauHinh.f.format(this.ngayGiaNhap.getTime()));
+        
+        if (!this.ketQua.isEmpty()) {
+            this.ketQua.forEach(i -> i.hienThiKQ());
+        }
     }
     
-
-    /**
-     * @return the maHV
-     */
-    public int getMaHV() {
-        return maHV;
+    //ghi HV vao file HocVien.txt
+    public void ghiHVText(){
+        
+    }
+    
+    public void xoaHVText(){
+        
     }
 
-    /**
-     * @param maHV the maHV to set
-     */
-    public void setMaHV(int maHV) {
-        this.maHV = maHV;
-    }
 
     /**
      * @return the hoTen
@@ -188,4 +201,20 @@ public class HocVien {
         this.ketQua = ketQua;
     }
 
+    /**
+     * @return the maHV
+     */
+    public String getMaHV() {
+        return maHV;
+    }
+
+    /**
+     * @param maHV the maHV to set
+     */
+    public void setMaHV(String maHV) {
+        this.maHV = maHV;
+    }
+    
 }
+
+

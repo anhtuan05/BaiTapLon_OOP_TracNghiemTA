@@ -1,7 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.baitaplontracnghiemta_tuanhung;
 
+/**
+ *
+ * @author nguye
+ */
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CauHoi {
+public class MultipleChoice {
 
 	private static int dem=0;
 
@@ -11,20 +21,28 @@ public abstract class CauHoi {
 
 	private CapDo capDo;
 
-	private List<DanhMuc> danhMuc;
+	private DanhMuc danhMuc;
 
-	private List<PhuongAn> phuongAn;
+	private List<PhuongAn> phuongAn=new ArrayList<>();
 
 	private PhuongAn pADung;
 
-	public CauHoi() {
-
+    public MultipleChoice(String noiDung,CapDo capDo,DanhMuc danhMuc, PhuongAn pADung) {
+        this.noiDung = noiDung;
+        this.capDo = capDo;
+        this.danhMuc = danhMuc;
+        this.pADung = pADung;
+    }
+    public void themPhuongAn(PhuongAn pa){
+        phuongAn.add(pa);
+    }
+    
+    public void hienThi() {
+            System.out.println("Cau hoi: "+noiDung);
+            System.out.println();
+            phuongAn.forEach(s->{System.out.print(s + "\t");});
+            System.out.println();
 	}
-
-	public void hienThi() {
-
-	}
-
     /**
      * @return the maCauHoi
      */
@@ -70,14 +88,14 @@ public abstract class CauHoi {
     /**
      * @return the danhMuc
      */
-    public List<DanhMuc> getDanhMuc() {
+    public DanhMuc getDanhMuc() {
         return danhMuc;
     }
 
     /**
      * @param danhMuc the danhMuc to set
      */
-    public void setDanhMuc(List<DanhMuc> danhMuc) {
+    public void setDanhMuc(DanhMuc danhMuc) {
         this.danhMuc = danhMuc;
     }
 
