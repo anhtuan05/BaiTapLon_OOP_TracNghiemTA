@@ -111,7 +111,7 @@ public class HocVien {
     public void ghiHVText(){
         
     }
-    
+    //xoa HV khoi file HocVien.txt
     public void xoaHVText(){
         
     }

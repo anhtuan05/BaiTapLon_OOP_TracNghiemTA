@@ -8,7 +8,6 @@ package com.mycompany.baitaplontracnghiemta_tuanhung;
  *
  * @author nguye
  */
-
 import static com.mycompany.baitaplontracnghiemta_tuanhung.CauHinh.s;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class BaiTap {
     private KetQua ketQua;
 
     {
-        this.dSMultipleChoice = new ArrayList<>();        
+        this.dSMultipleChoice = new ArrayList<>();
     }
 
     public BaiTap() {
@@ -41,30 +40,31 @@ public class BaiTap {
     public void taoBT(int soCauHoi) { //Tao BT MultipleChoice
         List<MultipleChoice> dsTatCaMC = dsCH.dsMutipleChoice();
         List<MultipleChoice> dsTatCaMCDalam = new ArrayList<>();
-        
-        List<MultipleChoice> dsTamMC = null;
-        
-        
-        this.dSMultipleChoice.addAll(dsTamMC);
+
+        dsTatCaMCDalam.addAll(this.ketQua.getHocVien().getKetQua().forEach(i -> i.getBaiTap().getdSMutipleChoice()).collect(Collectors.toList()));
+
+          this.dSMultipleChoice.addAll(dsTatCaMCDalam);
     }
 
     public void taoBT(String capDo) { //Tao BT Incomplete
         List<Incomplete> dsTatCaI = dsCH.dsIncomplete();
 
-        List<Incomplete> dsTamI = dsTatCaI.stream().filter(i -> i.getCapDo().equals(capDo)).collect(Collectors.toList());
-        
+        List<Incomplete> dsTamI = dsTatCaI.stream().filter(i -> i.getCapDo().equals(capDo))
+                .collect(Collectors.toList());
+
         Random r = new Random();
-        int u =r.nextInt( dsTamI.size());
+        int u = r.nextInt(dsTamI.size());
         this.incomplete = dsTamI.get(u);
     }
 
     public void taoBT(String capDo, int n) { //Tao BT Conversation
         List<Conversation> dsTatCaC = dsCH.dsConversation();
 
-        List<Conversation> dsTamC = dsTatCaC.stream().filter(i -> i.getCapDo().equals(capDo)).collect(Collectors.toList());
+        List<Conversation> dsTamC = dsTatCaC.stream().filter(i -> i.getCapDo().equals(capDo))
+                .collect(Collectors.toList());
 
         Random r = new Random();
-        int u =r.nextInt( dsTamC.size());
+        int u = r.nextInt(dsTamC.size());
         this.conversation = dsTamC.get(u);
     }
 
@@ -104,8 +104,6 @@ public class BaiTap {
     public void setdSMutipleChoice(List<MultipleChoice> dSMutipleChoice) {
         this.dSMultipleChoice = dSMutipleChoice;
     }
-
-
 
     /**
      * @return the tenBaiTap
@@ -164,4 +162,3 @@ public class BaiTap {
     }
 
 }
-

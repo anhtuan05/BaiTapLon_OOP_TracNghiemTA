@@ -75,7 +75,12 @@ public class QLHocVien {
     }
 
     public HocVien timHVTheoID(String id) {
-        return (HocVien) this.dsHocVien.stream().filter(i -> i.getMaHV().equals(id));
+        HocVien h = new HocVien();
+        for (int i=0; i<this.dsHocVien.size();i++){
+            if (this.dsHocVien.get(i).getMaHV().equals(id))
+                h = this.dsHocVien.get(i);
+        }
+        return h;
     }
 
     public void xuatDSHV() {
