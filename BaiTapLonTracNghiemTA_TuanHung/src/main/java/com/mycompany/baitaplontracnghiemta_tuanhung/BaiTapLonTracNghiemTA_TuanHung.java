@@ -19,20 +19,27 @@ public class BaiTapLonTracNghiemTA_TuanHung {
 //        HocVien h3 = new HocVien("HV18", "NAT", "Nam", "QN", "05/03/2002");
 //        HocVien h4 = new HocVien("HV19", "NAT", "Nam", "QN", "05/03/2002");
         QLHocVien ds = new QLHocVien();
+        QLCauHoi ds2 = new QLCauHoi();
         //ds.themHV(h1,h2,h3,h4);
         ds.themHV("src/main/resources/HocVien.txt");
         ds.xuatDSHV();
-        System.out.println("------------------------------------\n");
-        ds.timKiemHVTheoTen("Lai Bac Nam").forEach(i->i.xuatHV());
+        KetQua.dsHV = ds;
+        BaiTap.dsCH = ds2;
+//        System.out.println("------------------------------------\n");
+//        ds.timKiemHVTheoTen("Lai Bac Nam").forEach(i->i.xuatHV());
+//        
+//        System.out.println("------------------------------------\n");
+//        ds.timKiemHVTheoGT("Nam").forEach(i->i.xuatHV());
+//        
+//        System.out.println("------------------------------------\n");
+//        ds.timKiemTheoQQ("TpHCM").forEach(i->i.xuatHV());
+//        
+//        System.out.println("------------------------------------\n");
+//        ds.timHVTheoID("HV01").xuatHV();
         
-        System.out.println("------------------------------------\n");
-        ds.timKiemHVTheoGT("Nam").forEach(i->i.xuatHV());
+        KetQua k = new KetQua();
+        k.luyenTap("Kho");
         
-        System.out.println("------------------------------------\n");
-        ds.timKiemTheoQQ("TpHCM").forEach(i->i.xuatHV());
-        
-        System.out.println("------------------------------------\n");
-        ds.timHVTheoID("HV01").xuatHV();
     }
 }
 

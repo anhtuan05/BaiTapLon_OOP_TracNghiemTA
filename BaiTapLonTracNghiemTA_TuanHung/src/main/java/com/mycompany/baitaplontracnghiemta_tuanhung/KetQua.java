@@ -33,44 +33,46 @@ public class KetQua {
 
     public void luyenTap(int soCauHoi) { //MutipleChoice
 
-        System.out.print("Nhap ID cua ban %s: ");
+        System.out.print("Nhap ID cua ban: ");
         this.hocVien = dsHV.timHVTheoID(CauHinh.s.nextLine());
-        this.hocVien.getKetQua().add(this);
 
         BaiTap bT = new BaiTap();
-        this.baiTap.setKetQua(this);
+        bT.setKetQua(this);
         bT.taoBT(soCauHoi);
         this.baiTap = bT;
 
         this.diem = bT.tinhDiem();
+        this.hocVien.getKetQua().add(this);
     }
 
     public void luyenTap(String capDo) {//Incomplete
 
-        System.out.print("Nhap ID cua ban %s: ");
+        System.out.print("Nhap ID cua ban: ");
         this.hocVien = dsHV.timHVTheoID(CauHinh.s.nextLine());
-        this.hocVien.getKetQua().add(this);
+        
 
         BaiTap bT = new BaiTap();
+        bT.setKetQua(this);
         bT.taoBT(capDo);
-        this.baiTap.setKetQua(this);
         this.baiTap = bT;
 
         this.diem = bT.tinhDiem();
+        this.hocVien.getKetQua().add(this);
     }
 
     public void luyenTap(String capDo, int n) {//Conversation
 
-        System.out.print("Nhap ID cua ban %s: ");
+        System.out.print("Nhap ID cua ban: ");
         this.hocVien = dsHV.timHVTheoID(CauHinh.s.nextLine());
-        this.hocVien.getKetQua().add(this);
+        
 
         BaiTap bT = new BaiTap();
+        bT.setKetQua(this);
         bT.taoBT(capDo, n);
-        this.baiTap.setKetQua(this);
         this.baiTap = bT;
 
         this.diem = bT.tinhDiem();
+        this.hocVien.getKetQua().add(this);
     }
 
     public void hienThiKQ() {
