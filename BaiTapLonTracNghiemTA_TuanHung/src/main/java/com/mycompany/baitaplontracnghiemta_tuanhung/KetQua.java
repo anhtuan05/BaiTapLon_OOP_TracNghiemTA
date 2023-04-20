@@ -8,7 +8,6 @@ package com.mycompany.baitaplontracnghiemta_tuanhung;
  *
  * @author nguye
  */
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -49,7 +48,6 @@ public class KetQua {
 
         System.out.print("Nhap ID cua ban: ");
         this.hocVien = dsHV.timHVTheoID(CauHinh.s.nextLine());
-        
 
         BaiTap bT = new BaiTap();
         bT.setKetQua(this);
@@ -64,7 +62,6 @@ public class KetQua {
 
         System.out.print("Nhap ID cua ban: ");
         this.hocVien = dsHV.timHVTheoID(CauHinh.s.nextLine());
-        
 
         BaiTap bT = new BaiTap();
         bT.setKetQua(this);
@@ -136,4 +133,3 @@ public class KetQua {
     }
 
 }
-

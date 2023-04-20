@@ -38,13 +38,16 @@ public class BaiTap {
     }
 
     public void taoBT(int soCauHoi) { //Tao BT MultipleChoice
-        List<MultipleChoice> dsTatCaMC = dsCH.dsMutipleChoice();
+        List<MultipleChoice> dsTatCaMCChuaLam = dsCH.dsMutipleChoice();
         List<MultipleChoice> dsTatCaMCDalam = new ArrayList<>();
 
         dsTatCaMCDalam.addAll(this.ketQua.getHocVien().getKetQua()
                 .forEach(i -> i.getBaiTap().getdSMutipleChoice()).collect(Collectors.toList()));
 
-//          this.dSMultipleChoice.addAll(dsTatCaMCDalam);
+        dsTatCaMCChuaLam.removeAll(dsTatCaMCDalam);
+        for (int i = 0; i < soCauHoi; i++) {
+            this.dSMultipleChoice.add(dsTatCaMCChuaLam.get(i));
+        }
     }
 
     public void taoBT(String capDo) { //Tao BT Incomplete
@@ -83,10 +86,7 @@ public class BaiTap {
                     dem++;
                 }
             }
-        } else {
-            System.out.println("blaba");
         }
-
         return (10 / soCau) * dem;
     }
 
